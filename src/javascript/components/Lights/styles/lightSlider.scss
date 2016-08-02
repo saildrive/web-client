@@ -1,0 +1,69 @@
+.light-slider {
+  background: rgba(44, 46, 64, 1);
+  padding: 10px;
+  margin: 0 0 10px 0;
+  display: flex;
+  border-left: 4px solid rgba(44, 46, 64, 1);
+
+  &.light-slider--powered {
+    border-left: 4px solid rgba(30, 104, 187, 1);
+  }
+
+  .device-name {
+    flex:1 0 10%;
+    padding: 0 10px;
+  }
+
+  .brightness-icon {
+    align-self: center;
+    padding: 0 20px 0 10px;
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+
+    &.brightness-icon--small {
+      padding: 0 10px 0 20px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .horizontal-slider {
+    align-self: center;
+    width: 100%;
+    height: 10px;
+    background: rgba(70, 73, 92, 1);
+    border-radius: 5px;
+  }
+
+  .handle {
+    background-color: white;
+    cursor: pointer;
+    top: -7px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+  }
+
+  .handle.active {
+    background-color: white;
+  }
+
+  .bar {
+    position: relative;
+    background: rgba(30, 104, 187, 1);
+    top: 0;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  .bar.bar-1 {
+    background: rgba(70, 73, 92, 1);
+  }
+
+  .device-dimmer {
+    text-align: center;
+    width: 10%;
+  }
+}
+

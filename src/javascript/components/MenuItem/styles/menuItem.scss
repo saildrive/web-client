@@ -1,0 +1,22 @@
+.menu-item {
+  width: calc(100% - 1px);
+  border-left: 3px solid rgba(35, 37, 50, 1);
+
+  &.menu-item--active {
+    background-color: rgba(31, 32, 44, 1);
+    border-left: 3px solid rgba(30, 104, 187, 1);
+  }
+
+  &:hover {
+    border-left: 3px solid rgba(30, 104, 187, 1);
+  }
+
+  a {
+    padding: 10px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    width: calc(100% - 20px);
+    height: 100%;
+  }
+}
