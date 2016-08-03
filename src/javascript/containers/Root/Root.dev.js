@@ -11,6 +11,7 @@ export default class Root extends Component {
             <Provider store={store}>
                 <div>
                     <Router history={history} routes={routes} />
+                    <DevTools />
                 </div>
             </Provider>
         )
@@ -20,4 +21,4 @@ export default class Root extends Component {
 Root.propTypes = {
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
-}
+};
