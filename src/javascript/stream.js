@@ -1,20 +1,23 @@
-import { updateNavigation, updateEnvironment } from "./actions/stream";
-import createObjectFromDotNotation from "./pureFunctions/objectFromDotNotation";
+import Promise from "bluebird";
+import autobahn from './vendor/autobahn';
 
-export default (store) => {
-    let datafeed = new WebSocket(`ws://${window.location.hostname}:5000/signalk/v1/stream`);
+export const startStream = () => {
+    return new Promise(function(resolve, reject) {
+        let connection = new autobahn.Connection({
+            url: 'ws://127.0.0.1:8080/ws',
+            realm: 'realm1'
+        });
 
-    datafeed.onopen = () => {
-        const subscriptionObject = {
-            "context": "vessels.self",
-            "subscribe": [{
-                "path": "*"
-            }]
+        connection.onopen = function (session) {
+            resolve(session);
         };
-        const subscriptionMessage = JSON.stringify(subscriptionObject);
-        datafeed.send(subscriptionMessage);
-    };
 
+        connection.open();
+    });
+
+
+
+    /*
     datafeed.onmessage = (e) => {
         let data = JSON.parse(e.data);
 
@@ -36,5 +39,5 @@ export default (store) => {
                 })
             })
         }
-    };
+    };*/
 }

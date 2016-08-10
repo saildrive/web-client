@@ -14,6 +14,7 @@
   "author": "Jared Rada",
   "license": "ISC",
   "dependencies": {
+    "autobahn": "^0.10.1",
     "bluebird": "^3.4.1",
     "classnames": "^2.2.5",
     "exports-loader": "^0.6.3",
@@ -39,6 +40,7 @@
     "css-loader": "^0.23.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.16.0",
+    "json-loader": "^0.5.4",
     "node-sass": "^3.8.0",
     "react-router-redux": "^4.0.5",
     "redux-devtools": "^3.2.0",

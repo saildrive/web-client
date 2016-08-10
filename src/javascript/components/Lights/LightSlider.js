@@ -12,8 +12,13 @@ export default class LightSlider extends Component {
     }
 
     onChange(value) {
-        this.props.onChange(this.props.id, {
-            dimmer: value
+        let { lightId } = this.props;
+
+        this.props.onChange({
+            id: lightId,
+            data: {
+                dimmer: value
+            }
         });
     }
 

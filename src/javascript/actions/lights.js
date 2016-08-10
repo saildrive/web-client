@@ -1,5 +1,5 @@
 import checkHttpStatus from "../pureFunctions/checkHttpStatus";
-import { GET_LIGHTS, SET_LIGHT } from "../constants";
+import { GET_LIGHTS, UPDATE_LIGHT } from "../constants";
 import "whatwg-fetch";
 import Promise from "bluebird";
 
@@ -41,24 +41,24 @@ export function getLights() {
                         name: "Q Berth",
                         description: "V Berth",
                         dimmer: 0
-                    }
+                    },
                 ]
             })
         }
     }
 }
 
-export function setLight(id, params) {
+export function updateLight(params) {
+    const { lightId, data } = params;
     return {
-        type: SET_LIGHT,
+        type: UPDATE_LIGHT,
         payload: {
-            promise: fetch(
-                `http://localhost/seadrive/lights/${id}`
-            ).then(checkHttpStatus)
-        },
-        meta: {
-            id: id,
-            params
+            autobahnRPC: {
+                id: lightId,
+                path: `lights/${lightId}`,
+                method: "UPDATE",
+                data,
+            }
         }
     }
 }

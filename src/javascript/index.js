@@ -4,13 +4,15 @@ import { hashHistory } from "react-router"
 import { syncHistoryWithStore } from "react-router-redux"
 import Root from "./containers/Root/Root"
 import configureStore from "./store/configureStore"
-import startDatafeed from "./stream.js";
+import { startStream } from "./stream.js";
 
-const store = configureStore();
-const history = syncHistoryWithStore(hashHistory, store);
-startDatafeed(store);
+startStream().then(session => {
+    const store = configureStore(session);
+    const history = syncHistoryWithStore(hashHistory, store);
 
-render(
-    <Root store={store} history={history} />,
-    document.getElementById("root")
-);
+    render(
+        <Root store={store} history={history} />,
+        document.getElementById("root")
+    );
+});
+

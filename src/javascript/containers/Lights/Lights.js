@@ -2,7 +2,7 @@ require("./styles/lights.scss");
 
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { getLights, setLight } from "../../actions/lights";
+import { getLights, updateLight } from "../../actions/lights";
 import LightSlider from "../../components/Lights/LightSlider";
 
 
@@ -19,7 +19,7 @@ class Lights extends Component {
                 { lights.devices.map(light =>
                     <LightSlider
                         { ...light }
-                        onChange={this.props.setLight}
+                        onChange={this.props.updateLight}
                         key={light.id}
                     />
                 ) }
@@ -41,7 +41,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getLights: () => dispatch(getLights()),
-        setLight: (id, params) => dispatch(setLight(id, params))
+        updateLight: params => dispatch(updateLight(params))
     }
 }
 
