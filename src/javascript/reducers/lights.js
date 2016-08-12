@@ -1,4 +1,4 @@
-import { GET_LIGHTS, SET_LIGHT } from "../constants"
+import { GET_LIGHTS, UPDATE_LIGHT } from "../constants"
 
 const initialState = {
     devices: []
@@ -6,10 +6,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case  `${GET_LIGHTS}_PENDING`:
-            return Object.assign({}, state, {
-            });
-
         case `${GET_LIGHTS}_FULFILLED`:
             return Object.assign({}, state, {
                 devices: action.payload.devices
@@ -20,13 +16,11 @@ export default (state = initialState, action) => {
                 error: "error"
             });
 
-        case `${SET_LIGHT}_PENDING`:
+        case `${UPDATE_LIGHT}_FULFILLED`:
             return Object.assign({}, state, {
                 devices: state.devices.map((light, i) => {
-                    if (light.id === action.meta.id) {
-                        return Object.assign({}, light, {
-                            dimmer: action.meta.params.dimmer
-                        })
+                    if (light.id === action.payload.id) {
+                        return Object.assign({}, light, action.payload)
                     }
                     return light;
                 })

@@ -12,10 +12,10 @@ export default class LightSlider extends Component {
     }
 
     onChange(value) {
-        let { lightId } = this.props;
+        let { id } = this.props;
 
         this.props.onChange({
-            id: lightId,
+            id: id,
             data: {
                 dimmer: value
             }
@@ -42,7 +42,7 @@ export default class LightSlider extends Component {
                     defaultValue={dimmer}
                 />
                 <BrightnessOnIcon className="brightness-icon"/>
-                <p className="device-dimmer">{`${dimmer}%`}</p>
+                <p className="device-dimmer">{`${dimmer || 0}%`}</p>
             </div>
         )
     }

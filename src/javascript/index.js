@@ -15,4 +15,3 @@ startStream().then(session => {
         document.getElementById("root")
     );
 });
-

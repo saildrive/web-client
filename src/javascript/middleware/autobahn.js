@@ -9,14 +9,19 @@ export const autobahnMiddleware = (session) => {
                     payload: action.payload.autobahnRPC
                 });
 
-                session.call(`com.saildrive.${action.type.toLowerCase()}`, [action.payload.autobahnRPC]).then(
-                    function (res) {
+                session.call(`com.saildrive.${action.type.toLowerCase()}`, [action.payload.autobahnRPC])
+                    .then(rsp => {
                         dispatch({
                             type: `${action.type}_FULFILLED`,
-                            payload: res
+                            payload: rsp
                         });
-                    }
-                );
+                    })
+                    .catch(rsp => {
+                        dispatch({
+                            type: `${action.type}_REJECTED`,
+                            payload: rsp
+                        });
+                    });
             }
         }
     }
