@@ -1,11 +1,28 @@
-import { GET_LIGHTS, UPDATE_LIGHT } from "../constants"
+import { GET_LIGHTS, UPDATE_LIGHT, CLEAR_NOTIFICATION } from "../constants"
+import * as messages from "../constants/messages"
+import _ from "lodash";
+
+let notificationId = 0;
 
 const initialState = {
-    devices: []
+    devices: [],
+    notifications: [{
+        type: "error",
+        title: "Poop",
+        description: "currently poopiung",
+        id: 0
+    }]
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case "CLEAR_NOTIFICATION":
+            return Object.assign({}, state, {
+                notifications: _.reject(state.notifications, notification => {
+                    return notification.id === action.payload.id
+                })
+            });
+
         case `${GET_LIGHTS}_FULFILLED`:
             return Object.assign({}, state, {
                 devices: action.payload.devices
@@ -13,7 +30,12 @@ export default (state = initialState, action) => {
 
         case `${GET_LIGHTS}_REJECTED`:
             return Object.assign({}, state, {
-                error: "error"
+                notifications: [ ...state.notifications, {
+                    type: "error",
+                    title: messages.GET_LIGHTS_ERROR.message,
+                    description: _.get(action, "payload.args", [ ])[ 0 ],
+                    id: ++notificationId
+                }]
             });
 
         case `${UPDATE_LIGHT}_FULFILLED`:
@@ -24,6 +46,11 @@ export default (state = initialState, action) => {
                     }
                     return light;
                 })
+            });
+
+        case `${UPDATE_LIGHT}_REJECTED`:
+            return Object.assign({}, state, {
+                notifications: [ ...state.notifications, action.payload]
             });
 
         default:

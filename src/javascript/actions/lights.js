@@ -1,6 +1,6 @@
 import checkHttpStatus from "../pureFunctions/checkHttpStatus";
 import Promise from "bluebird";
-import { GET_LIGHTS, UPDATE_LIGHT } from "../constants";
+import { GET_LIGHTS, UPDATE_LIGHT, CLEAR_NOTIFICATION } from "../constants";
 import "whatwg-fetch";
 
 export function getLights() {
@@ -26,6 +26,15 @@ export function updateLight(params) {
                 method: "UPDATE",
                 data,
             }
+        }
+    }
+}
+
+export function clearNotification(id) {
+    return {
+        type: CLEAR_NOTIFICATION,
+        payload: {
+            id
         }
     }
 }
