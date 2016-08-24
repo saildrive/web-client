@@ -6,12 +6,7 @@ let notificationId = 0;
 
 const initialState = {
     devices: [],
-    notifications: [{
-        type: "error",
-        title: "Poop",
-        description: "currently poopiung",
-        id: 0
-    }]
+    notifications: []
 };
 
 export default (state = initialState, action) => {

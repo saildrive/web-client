@@ -1,5 +1,38 @@
-.lights-container {
+.lights-page {
   padding: 10px;
 
-  color: white;
+  .page-header {
+    width: 100%;
+    margin: 10px 0 20px 0;
+    display: flex;
+    justify-content: flex-end;
+
+
+    .info {
+      border-right: 1px solid rgba(44, 46, 64, 1);
+      margin: 0 10px 0 0;
+      padding: 0 25px 0 0;
+      color: #aaaaaa;
+    }
+
+    .button {
+      margin: 0 0 0 15px;
+    }
+  }
+
+
+  .switches {
+    border-left: 1px solid rgba(44, 46, 64, 1);
+    border-right: 1px solid rgba(44, 46, 64, 1);
+  }
+
+  .switches__header {
+    background: rgba(44, 46, 64, 1);
+    width: 100%;
+  }
+
+  .switches__title {
+    margin: 0;
+    padding: 10px 0 15px 20px;
+  }
 }

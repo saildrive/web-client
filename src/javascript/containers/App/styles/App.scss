@@ -24,7 +24,7 @@ body {
   width: 100%;
   overflow: hidden;
   position: fixed;
-  color: white;
+  color: #eeeeee;
 }
 
 #root, #root>div{
@@ -118,7 +118,7 @@ body {
     display: block;
   }
 
-  .btn-hamburger {
+  .slideout__button {
     display: none;
   }
 }

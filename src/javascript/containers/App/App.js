@@ -72,7 +72,7 @@ class App extends Component {
                 </nav>
                 <main className="content" id="content">
                     <div className="header">
-                        <button onClick={this.slideToggle}>☰</button>
+                        <button className="slideout__button" onClick={this.slideToggle}>☰</button>
                         <dl className="header-stats">
                             <div className="header-stat">
                                 <dd className="stat-value">{navigation.speedOverGround && navigation.speedOverGround.toFixed(1)}kts</dd>

@@ -39,7 +39,7 @@ export default class LightSlider extends Component {
                     withBars
                     step={5}
                     onChange={this.onChange.bind(this)}
-                    defaultValue={dimmer}
+                    value={dimmer}
                 />
                 <BrightnessOnIcon className="brightness-icon"/>
                 <p className="device-dimmer">{`${dimmer || 0}%`}</p>

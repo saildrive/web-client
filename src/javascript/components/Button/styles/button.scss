@@ -1,0 +1,45 @@
+.button {
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 6px 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    outline: 0;
+  }
+}
+
+@mixin button-modifier($name, $background-color, $text-color) {
+  .button--#{$name} {
+    background-color: $background-color;
+    color: $text-color;
+
+    &:hover:not(.button--disabled), &:active:not(.button--disabled) {
+      background-color: lighten($background-color, 3%);
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: darken($background-color, 3%);
+    }
+  }
+}
+
+@include button-modifier("text", transparent, #848484)
+@include button-modifier("blue", #3393fc, #fff)
+@include button-modifier("green", #8cc58c, #fff)
+@include button-modifier("red", #ec5252, #fff)
+
+.button--disabled {
+  background-color: transparent;
+  color: #a7a7a7;
+  cursor: default;
+}
