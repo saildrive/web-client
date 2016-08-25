@@ -11,12 +11,6 @@ import LightSlider from "../../components/Lights/LightSlider";
 class Lights extends Component {
     constructor(props) {
         super(props);
-
-        this.adjustAllLights100 = this.adjustAllLights.bind(this, 100);
-        this.adjustAllLights0 = this.adjustAllLights.bind(this, 0);
-        this.checkAllLights100 = this.checkAllLights.bind(this, 100);
-        this.checkAllLights0 = this.checkAllLights.bind(this, 0);
-        this.calculateWattage = this.calculateWattage.bind(this);
     }
 
     render() {
@@ -27,24 +21,22 @@ class Lights extends Component {
 
                 <Feedback {...this.props} />
 
-                {this.renderNoLights(lights)}
-
                 <div className="page-header">
                     <div className="info">
-                        Watts: {this.calculateWattage()}
+                        Watts: {this.calculateWattage(lights)}
                     </div>
 
                     <div className="actions">
                         <Button text="All On"
-                            onClick={this.adjustAllLights100}
+                            onClick={() => this.adjustAllLights(lights, 100)}
                             type="blue"
-                            isDisabled={this.checkAllLights100()}
+                            isDisabled={this.checkAllLights(lights, 100)}
                         />
 
                         <Button text="All Off"
-                            onClick={this.adjustAllLights0}
+                            onClick={() => this.adjustAllLights(lights, 0)}
                             type="blue"
-                            isDisabled={this.checkAllLights0()}
+                            isDisabled={this.checkAllLights(lights, 0)}
                         />
                     </div>
                 </div>
@@ -54,6 +46,9 @@ class Lights extends Component {
                     <div className="switches__header">
                         <p className="switches__title">Lighting Devices</p>
                     </div>
+
+                    {this.renderNoLights(lights)}
+
                     { lights.map(light =>
                         <LightSlider
                             { ...light }
@@ -78,14 +73,12 @@ class Lights extends Component {
         }
     }
 
-    checkAllLights(dimmer){
-        const { lights } = this.props;
-
+    checkAllLights(lights, dimmer){
         return _.every(lights, ["dimmer", dimmer])
     }
 
-    adjustAllLights(dimmer) {
-        const { updateLight, lights } = this.props;
+    adjustAllLights(lights, dimmer) {
+        const { updateLight } = this.props;
 
         lights.forEach(light => {
             updateLight({
@@ -97,13 +90,11 @@ class Lights extends Component {
         });
     }
 
-    calculateWattage() {
-        const { lights } = this.props;
-
+    calculateWattage(lights) {
         let watts = 0;
 
         lights.forEach(light => {
-            watts += light.dimmer / 100 * 30
+            watts += (light.dimmer / 100) * (light.maxWatts)
         });
 
         return Math.ceil(watts);

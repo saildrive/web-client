@@ -10,7 +10,7 @@
     border-left: 4px solid rgba(30, 104, 187, 1);
   }
 
-  .device-name {
+  .light-slider__name {
     flex:1 0 10%;
     padding: 0 10px;
   }
@@ -62,9 +62,14 @@
     background: rgba(70, 73, 92, 1);
   }
 
-  .device-dimmer {
+  .light-slider__dimmer {
     text-align: center;
     width: 10%;
+  }
+
+  .light-slider__watts {
+    text-align: center;
+    width: 15%;
   }
 }
 

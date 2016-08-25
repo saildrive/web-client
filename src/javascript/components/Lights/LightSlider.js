@@ -23,7 +23,7 @@ export default class LightSlider extends Component {
     }
 
     render() {
-        const { name, dimmer } = this.props;
+        const { name, dimmer, maxWatts } = this.props;
 
         let containerClass = classNames({
             "light-slider": true,
@@ -32,7 +32,7 @@ export default class LightSlider extends Component {
 
         return (
             <div className={containerClass}>
-                <p className="device-name">{name}</p>
+                <p className="light-slider__name">{name}</p>
                 <BrightnessOffIcon className="brightness-icon brightness-icon--small"/>
                 <ReactSlider
                     className="horizontal-slider"
@@ -42,8 +42,19 @@ export default class LightSlider extends Component {
                     value={dimmer}
                 />
                 <BrightnessOnIcon className="brightness-icon"/>
-                <p className="device-dimmer">{`${dimmer || 0}%`}</p>
+                <p className="light-slider__dimmer">{`${dimmer || 0}%`}</p>
+                <p className="light-slider__watts">{`${this.getWatts(dimmer, maxWatts)} watts`}</p>
             </div>
         )
+    }
+
+    getWatts(dimmer, maxWatts) {
+        let watts = (dimmer / 100) * (maxWatts);
+
+        if (isNaN(watts)) {
+            return "Error"
+        } else {
+            return Math.ceil(watts);
+        }
     }
 }
