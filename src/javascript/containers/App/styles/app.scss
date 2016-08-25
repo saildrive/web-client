@@ -50,7 +50,7 @@ body {
   display: flex;
   align-items: center;
   align-content: space-between;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 10px;
 
   .header-stats {
@@ -77,49 +77,6 @@ body {
     margin: 0;
     font-weight: 200;
     font-size: 1.5rem;
-  }
-}
-
-.slideout-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-  width: 256px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  display: none;
-}
-
-.slideout-panel {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-}
-
-.slideout-open,
-.slideout-open body,
-.slideout-open .slideout-panel {
-  overflow: hidden;
-}
-
-.slideout-open .slideout-menu {
-  display: block;
-}
-
-@media screen and (min-width: 768px) {
-  .slideout-panel {
-    margin-left: 256px;
-  }
-
-  .slideout-menu {
-    display: block;
-  }
-
-  .slideout__button {
-    display: none;
   }
 }
 
