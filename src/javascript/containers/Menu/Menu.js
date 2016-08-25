@@ -28,12 +28,22 @@ class Menu extends Component {
     }
 
     render() {
-        const { location } = this.props;
+        const {
+            location,
+            lightsNotifications,
+        } = this.props;
 
         return (
             <nav className="menu" id="menu">
-                <MenuItem route="/" active={location.pathname}>Dashboard</MenuItem>
-                <MenuItem route="/lights" active={location.pathname}>Lights</MenuItem>
+                <MenuItem route="/"
+                    active={location.pathname}>
+                    Dashboard
+                </MenuItem>
+                <MenuItem route="/lights"
+                          active={location.pathname}
+                          notifications={lightsNotifications}>
+                    Lights
+                </MenuItem>
             </nav>
         )
     }
@@ -42,9 +52,10 @@ class Menu extends Component {
 Menu.propTypes = {
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
-        menuOpen: state.menu.menuOpen
+        menuOpen: state.menu.menuOpen,
+        lightsNotifications: state.lights.notifications,
     }
 }
 

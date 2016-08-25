@@ -1,5 +1,6 @@
 require("./styles/menuItem.scss");
 import React, { Component, PropTypes } from "react";
+import _ from "lodash";
 import { Link } from "react-router";
 
 export default class MenuItem extends Component {
@@ -17,11 +18,16 @@ export default class MenuItem extends Component {
     }
     
     getClassName() {
+        const { notifications } = this.props;
         let str = "menu-item";
 
         if (this.props.route === this.props.active) {
             str += " menu-item--active"    
-        } 
+        }
+
+        if (_.find(notifications, n => { return n.type === "error"; })) {
+            str += " menu-item--notification-error"
+        }
         
         return str;
     }

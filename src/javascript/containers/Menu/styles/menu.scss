@@ -27,6 +27,11 @@
   display: block;
 }
 
+.menu-item--notification-error {
+  animation: blinker .5s step-end infinite alternate;
+}
+@keyframes blinker { 50% { background: #ec5252; } }
+
 @media screen and (min-width: 768px) {
   .slideout-panel {
     margin-left: 256px;
