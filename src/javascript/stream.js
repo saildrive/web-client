@@ -4,7 +4,7 @@ import autobahn from './vendor/autobahn';
 export const startStream = () => {
     return new Promise(function(resolve, reject) {
         let connection = new autobahn.Connection({
-            url: 'ws://127.0.0.1:8080/ws',
+            url: 'ws://192.168.1.3:8080/ws',
             realm: 'realm1'
         });
 

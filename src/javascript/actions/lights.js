@@ -21,6 +21,7 @@ export function updateLight(params) {
         type: UPDATE_LIGHT,
         payload: {
             autobahnRPC: {
+                type: "PUBLISH",
                 id: id,
                 path: `lights/${id}`,
                 method: "UPDATE",

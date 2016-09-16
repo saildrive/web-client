@@ -32,18 +32,22 @@ export default class LightSlider extends Component {
 
         return (
             <div className={containerClass}>
-                <p className="light-slider__name">{name}</p>
-                <BrightnessOffIcon className="brightness-icon brightness-icon--small"/>
-                <ReactSlider
-                    className="horizontal-slider"
-                    withBars
-                    step={5}
-                    onChange={this.onChange.bind(this)}
-                    value={dimmer}
-                />
-                <BrightnessOnIcon className="brightness-icon"/>
-                <p className="light-slider__dimmer">{`${dimmer || 0}%`}</p>
-                <p className="light-slider__watts">{`${this.getWatts(dimmer, maxWatts)} watts`}</p>
+                <div className="light-slider__info">
+                    <p className="light-slider__name">{name}</p>
+                    <p className="light-slider__dimmer">{`${dimmer || 0}%`}</p>
+                    <p className="light-slider__watts">{`${this.getWatts(dimmer, maxWatts)} watts`}</p>
+                </div>
+                <div className="light-slider__slider">
+                    <BrightnessOffIcon className="brightness-icon brightness-icon--small"/>
+                    <ReactSlider
+                        className="horizontal-slider"
+                        withBars
+                        step={5}
+                        onChange={this.onChange.bind(this)}
+                        value={dimmer}
+                    />
+                    <BrightnessOnIcon className="brightness-icon"/>
+                </div>
             </div>
         )
     }

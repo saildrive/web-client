@@ -80,7 +80,12 @@ body {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .page {
+    margin: 10px;
+  }
+}
+
 .page {
   height: 100%;
-  margin: 10px;
 }
