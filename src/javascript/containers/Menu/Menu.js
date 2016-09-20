@@ -15,7 +15,8 @@ class Menu extends Component {
             'panel': document.getElementById('content'),
             'menu': document.getElementById('menu'),
             'padding': 256,
-            'tolerance': 70
+            'tolerance': 70,
+            'touch': false
         });
     }
 
