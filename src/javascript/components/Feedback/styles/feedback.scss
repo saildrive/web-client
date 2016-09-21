@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  width: calc(100% - 20px);
+  //width: calc(100% - 20px);
+  width: 100%;
   position: absolute;
 
   .notifications__item {

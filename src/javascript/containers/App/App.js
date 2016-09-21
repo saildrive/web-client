@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link, browserHistory } from 'react-router'
 import { toggleMenu } from "../../actions/menu";
 import Menu from "../Menu/Menu";
+import Feedback from "../../components/Feedback/Feedback";
 
 class App extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class App extends Component {
     }
 
     render() {
-        const { children, location, navigation } = this.props;
+        const { children, location, navigation, application } = this.props;
 
         return (
             <div className="app">
@@ -41,6 +42,7 @@ class App extends Component {
                             </div>
                         </dl>
                     </div>
+                    <Feedback {...application} />
                     {children}
                 </main>
             </div>
@@ -54,7 +56,8 @@ App.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        navigation: state.navigation
+        navigation: state.navigation,
+        application: state.application,
     }
 }
 

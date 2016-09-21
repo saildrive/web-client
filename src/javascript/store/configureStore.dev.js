@@ -13,7 +13,7 @@ export default function configureStore(initialState) {
 
     const store = createStore(rootReducer, initialState, enhancer);
 
-    startStream().then(session => {
+    startStream(store).then(session => {
         registerSubscriptions(session, store);
     });
 

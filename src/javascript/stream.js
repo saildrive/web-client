@@ -1,6 +1,7 @@
 import Promise from "bluebird";
 import autobahn from './vendor/autobahn';
 import * as messageTypes from "./constants/messageTypes";
+import { APP_ONLINE, CONNECTION_REJECTED } from "./constants";
 
 let store;
 let qSession;
@@ -18,7 +19,7 @@ export const registerSubscriptions = (session, reduxStore) => {
     });
 };
 
-export const startStream = () => {
+export const startStream = store => {
     qSession = new Promise(function(resolve, reject) {
         let connection = new autobahn.Connection({
             url: 'ws://127.0.0.1:8080/ws',
@@ -26,11 +27,17 @@ export const startStream = () => {
         });
 
         connection.onopen = function (session) {
+            store.dispatch({
+                type: APP_ONLINE
+            });
             resolve(session);
         };
 
         connection.onclose = function (reason, details) {
-            console.log("dispatch connection killed")
+            store.dispatch({
+                type: CONNECTION_REJECTED,
+                payload: Object.assign(details, {reason: reason})
+            });
         };
 
         connection.open();

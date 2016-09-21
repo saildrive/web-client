@@ -1,4 +1,4 @@
-import { TOGGLE_MENU } from "../constants"
+import { TOGGLE_MENU } from "../constants";
 
 const initialState = {
     menuOpen: false
