@@ -6,6 +6,7 @@ import { Link, browserHistory } from 'react-router'
 import { toggleMenu } from "../../actions/menu";
 import Menu from "../Menu/Menu";
 import Feedback from "../../components/Feedback/Feedback";
+import Header from "../../components/Header/Header";
 
 class App extends Component {
     constructor(props) {
@@ -29,19 +30,7 @@ class App extends Component {
             <div className="app">
                 <Menu location={location} />
                 <main className="content" id="content">
-                    <div className="header">
-                        <button className="slideout__button" onClick={this.slideToggle}>☰</button>
-                        <dl className="header-stats">
-                            <div className="header-stat">
-                                <dd className="stat-value">{navigation.speedOverGround && navigation.speedOverGround.toFixed(1)}kts</dd>
-                                <dt className="stat-type">SOG</dt>
-                            </div>
-                            <div className="header-stat">
-                                <dd className="stat-value">{navigation.courseOverGroundTrue && Math.round(navigation.courseOverGroundTrue)}°</dd>
-                                <dt className="stat-type">COG</dt>
-                            </div>
-                        </dl>
-                    </div>
+                    <Header navigation={navigation} />
                     <Feedback {...application} />
                     {children}
                 </main>
