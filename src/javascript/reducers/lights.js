@@ -1,5 +1,5 @@
-import { GET_LIGHTS, UPDATE_LIGHT, CLEAR_NOTIFICATION } from "../constants"
-import * as messages from "../constants/messages"
+import { GET_LIGHTS, UPDATE_LIGHT, CLEAR_NOTIFICATION } from "../constants";
+import * as messages from "../constants/messages";
 import _ from "lodash";
 
 let notificationId = 0;
