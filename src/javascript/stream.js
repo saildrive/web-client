@@ -1,10 +1,27 @@
 import Promise from "bluebird";
 import autobahn from './vendor/autobahn';
+import * as messageTypes from "./constants/messageTypes";
+
+let store;
+let qSession;
+
+export const registerSubscriptions = (session, reduxStore) => {
+    store = reduxStore;
+
+    Object.keys(messageTypes).forEach(type => {
+        session.subscribe(`com.saildrive.${type}`, rsp => {
+            store.dispatch({
+                type: type.toUpperCase(),
+                payload: rsp[0]
+            });
+        })
+    });
+};
 
 export const startStream = () => {
-    return new Promise(function(resolve, reject) {
+    qSession = new Promise(function(resolve, reject) {
         let connection = new autobahn.Connection({
-            url: 'ws://192.168.1.3:8080/ws',
+            url: 'ws://127.0.0.1:8080/ws',
             realm: 'realm1'
         });
 
@@ -12,32 +29,38 @@ export const startStream = () => {
             resolve(session);
         };
 
+        connection.onclose = function (reason, details) {
+            console.log("dispatch connection killed")
+        };
+
         connection.open();
     });
 
+    return qSession;
+};
 
-
-    /*
-    datafeed.onmessage = (e) => {
-        let data = JSON.parse(e.data);
-
-
-        if (data.hasOwnProperty("updates")) {
-            data.updates.forEach((values) => {
-                values.values.forEach((value) => {
-                    let slice = value.path.split(".")[0],
-                        obj = createObjectFromDotNotation(value.path.split(".").slice(1).join(), value.value);
-
-                    switch(slice) {
-                        case "navigation":
-                            store.dispatch(updateNavigation(obj));
-                            break;
-                        case "environment":
-                            store.dispatch(updateEnvironment(obj));
-                            break;
-                    }
-                })
+export const call = (action, payload) => {
+    qSession.then(session => {
+        session.call(`com.saildrive.${action.toLowerCase()}`, payload)
+            .then(rsp => {
+                store.dispatch({
+                    type: `${action}_FULFILLED`,
+                    payload: rsp
+                });
             })
+            .catch(rsp => {
+                store.dispatch({
+                    type: `${action}_REJECTED`,
+                    payload: rsp
+                });
+            });
         }
-    };*/
-}
+    )
+};
+
+export const publish = (action, payload) => {
+    qSession.then(session => {
+        session.publish(`com.saildrive.${action.toLowerCase()}`, payload)
+    });
+};
+
