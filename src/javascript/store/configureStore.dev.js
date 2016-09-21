@@ -2,21 +2,19 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "../reducers";
 import promiseMiddleware from "redux-promise-middleware";
 import { autobahnMiddleware } from "../middleware/autobahn";
+import { startStream, registerSubscriptions } from "../stream";
 import DevTools from "../containers/DevTools/DevTools";
 
-export default function configureStore(session, initialState) {
+export default function configureStore(initialState) {
     const enhancer = compose(
-        applyMiddleware(promiseMiddleware(), autobahnMiddleware(session)),
+        applyMiddleware(promiseMiddleware(), autobahnMiddleware()),
         DevTools.instrument()
     );
 
     const store = createStore(rootReducer, initialState, enhancer);
 
-    session.subscribe('com.saildrive.update_light_success', function(e){
-        store.dispatch({
-            type: "UPDATE_LIGHT_FULFILLED",
-            payload: e[0]
-        });
+    startStream().then(session => {
+        registerSubscriptions(session, store);
     });
 
     if (module.hot) {
