@@ -6,6 +6,7 @@ import { Link, browserHistory } from 'react-router'
 import { toggleMenu } from "../../actions/menu";
 import Menu from "../Menu/Menu";
 import Feedback from "../../components/Feedback/Feedback";
+import Settings from "../Settings/Settings"
 
 class App extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class App extends Component {
 
         return (
             <div className="app">
+                <Settings />
                 <Menu location={location} />
                 <main className="content" id="content">
                     <div className="header">
