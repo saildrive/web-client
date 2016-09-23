@@ -45,3 +45,29 @@
     display: none;
   }
 }
+
+.menu {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.menu__dock {
+  background-color: rgba(31, 32, 44, 1);
+}
+
+.gear-icon {
+  width: 18px;
+  height: 18px;
+  padding: 8px 6px 6px 6px;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &:hover {
+    background: rgba(30, 104, 187, 1);
+  }
+}
