@@ -6,6 +6,7 @@ import { Link, browserHistory } from 'react-router'
 import { toggleMenu } from "../../actions/menu";
 import Menu from "../Menu/Menu";
 import Feedback from "../../components/Feedback/Feedback";
+import Settings from "../Settings/Settings"
 import Header from "../../components/Header/Header";
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
 
         return (
             <div className="app">
+                <Settings />
                 <Menu location={location} />
                 <main className="content" id="content">
                     <Header navigation={navigation} />
