@@ -1,19 +1,19 @@
-import { CHANGE_SETTINGS } from "../constants";
-import * as messages from "../constants/messages";
-import _ from "lodash";
-
+import { CHANGE_SETTING } from "../constants";
 
 
 const initialState = {
-    units: ""
+    units: "metric"
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case CHANGE_SETTINGS:
-            return Object.assign({}, state, {
+        case CHANGE_SETTING:
 
-            });
+            var setting = {
+                [action.payload.setting]: action.payload.newValue
+            };
+
+            return Object.assign({}, state, setting);
         default:
             return state
     }

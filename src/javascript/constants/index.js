@@ -8,4 +8,4 @@
  export const APP_ONLINE = "APP_ONLINE";
  export const APP_OFFLINE = "APP_OFFLINE";
  export const CONNECTION_REJECTED = "CONNECTION_REJECTED";
- export const CHANGE_SETTINGS = "CHANGE_SETTINGS";
+ export const CHANGE_SETTING = "CHANGE_SETTING";

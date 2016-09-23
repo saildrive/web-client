@@ -1,0 +1,45 @@
+.button-group {
+  display: inline-block;
+
+
+}
+
+.button-group__option {
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  cursor: pointer;
+
+  &:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    outline: 0;
+  }
+}
+
+@mixin button-modifier($name, $background-color, $text-color) {
+  .button-group__option--active--#{$name} {
+    background-color: $background-color;
+    color: $text-color;
+  }
+}
+
+@include button-modifier("blue", #3393fc, #fff)
+@include button-modifier("green", #8cc58c, #fff)
+@include button-modifier("red", #ec5252, #fff)
