@@ -4,10 +4,12 @@ import promiseMiddleware from "redux-promise-middleware";
 import { autobahnMiddleware } from "../middleware/autobahn";
 import { startStream, registerSubscriptions } from "../stream";
 import DevTools from "../containers/DevTools/DevTools";
+import persistState from 'redux-localstorage'
 
 export default function configureStore(initialState) {
     const enhancer = compose(
         applyMiddleware(promiseMiddleware(), autobahnMiddleware()),
+        persistState("settings"),
         DevTools.instrument()
     );
 

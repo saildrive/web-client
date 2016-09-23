@@ -1,0 +1,15 @@
+.settings {
+  width: 100%;
+}
+
+.settings__option {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.close {
+  margin: 20px 0 0 0;
+  text-align: right;
+}
