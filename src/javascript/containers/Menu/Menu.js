@@ -49,6 +49,11 @@ class Menu extends Component {
                               notifications={lightsNotifications}>
                         Lights
                     </MenuItem>
+                    <MenuItem route="/pilot"
+                              active={location.pathname}
+                              notifications={lightsNotifications}>
+                        Pilot
+                    </MenuItem>
                 </div>
                 <div className="menu__dock">
                     <button className="button button--settings" onClick={toggleSettingsModal}>
