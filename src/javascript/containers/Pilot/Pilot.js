@@ -3,9 +3,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Feedback from "../../components/Feedback/Feedback";
-import Button from "../../components/Button/Button";
 
-import GaugeDBT from "../../components/GaugeDBT/GaugeDBT";
+import DBT from "../../components/Gauges/DBT/DBT";
+import Position from "../../components/Gauges/Position/Position";
 
 class Pilot extends Component {
     constructor(props) {
@@ -26,7 +26,8 @@ class Pilot extends Component {
 
                 <p>PILOT</p>
 
-                <GaugeDBT></GaugeDBT>
+                <DBT/>
+                <Position/>
 
             </div>
         )

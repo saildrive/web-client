@@ -1,4 +1,4 @@
-.gauge {
+.DBT {
   border: 1px solid rgba(73, 96, 121, 1);;
   background: rgba(31, 32, 44, 1);
   position: relative;
@@ -6,29 +6,21 @@
   height: 150px;
 }
 
-.gauge__value {
+.DBT__value {
   position: absolute;
   top: 10px;
   left: 14px;
   z-index:5;
 }
 
-.gauge__number {
+.DBT__number {
   display: inline;
   font-weight: 600;
   font-size: 2.5rem;
 }
 
-.gauge__number--warning {
-  color: red;
-}
-
-.gauge__units {
+.DBT__units {
   display: inline;
   font-weight: 200;
   font-size: 1.25rem;
-}
-
-.gauge__graph {
-
 }
