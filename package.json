@@ -28,6 +28,7 @@
     "react-modal": "^1.4.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.0",
+    "recharts": "^0.15.0",
     "redux": "^3.5.1",
     "redux-localstorage": "^0.4.1",
     "redux-promise-middleware": "^3.0.0",
