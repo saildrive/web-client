@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import Feedback from "../../components/Feedback/Feedback";
 import Button from "../../components/Button/Button";
 
+import GaugeDBT from "../../components/GaugeDBT/GaugeDBT";
+
 class Pilot extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +25,8 @@ class Pilot extends Component {
                 </div>
 
                 <p>PILOT</p>
+
+                <GaugeDBT></GaugeDBT>
 
             </div>
         )
