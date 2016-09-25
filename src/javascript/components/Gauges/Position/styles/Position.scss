@@ -1,0 +1,17 @@
+.position {
+  border: 1px solid rgba(73, 96, 121, 1);;
+  background: rgba(31, 32, 44, 1);
+  position: relative;
+  width: 300px;
+  height: 150px;
+}
+
+.position__value {
+  margin: 10px 0 0 14px
+}
+
+.position__number {
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+}

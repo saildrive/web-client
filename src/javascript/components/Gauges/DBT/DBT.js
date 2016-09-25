@@ -1,4 +1,4 @@
-require("./styles/gaugeDBT.scss");
+require("./styles/DBT.scss");
 
 import React, { Component, PropTypes } from "react";
 import { AreaChart, Area } from "Recharts";
@@ -39,12 +39,12 @@ export default class GaugeDBT extends Component {
         };
 
         return  (
-            <div className="gauge">
-                <div className="gauge__value">
-                    <h2 className="gauge__number">{currentDepth}</h2>
-                    <h2 className="gauge__units">m</h2>
+            <div className="DBT">
+                <div className="DBT__value">
+                    <h2 className="DBT__number">{currentDepth}</h2>
+                    <h2 className="DBT__units">m</h2>
                 </div>
-                <div className="gauge__graph">
+                <div className="DBT__graph">
                     <AreaChart
                         width={300}
                         height={150}
