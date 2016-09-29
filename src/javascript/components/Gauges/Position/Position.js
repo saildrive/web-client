@@ -1,4 +1,4 @@
-require("./styles/Position.scss");
+require("./styles/position.scss");
 
 import React, { Component, PropTypes } from "react";
 import _ from "lodash";

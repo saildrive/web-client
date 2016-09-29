@@ -8,11 +8,11 @@ export default class Feedback extends Component {
     }
 
     render() {
-        const { navigation } = this.props;
+        const { navigation, slideToggle } = this.props;
 
         return (
             <div className="header">
-                <button className="slideout__button" onClick={this.slideToggle}>☰</button>
+                <button className="slideout__button" onClick={slideToggle}>☰</button>
                 <dl className="header-stats">
                     <div className="header-stat">
                         <dd className="stat-value">{navigation.speedOverGround && navigation.speedOverGround.toFixed(1)}kts</dd>

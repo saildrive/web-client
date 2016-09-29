@@ -1,0 +1,42 @@
+.compass {
+  border: 1px solid rgba(73, 96, 121, 1);;
+  background: rgba(31, 32, 44, 1);
+  position: relative;
+  width: 300px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.compass__value {
+  position: absolute;
+  margin: 10px 0 0 14px
+}
+
+.compass__number {
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+}
+
+.compass__strip {
+  top: 100px;
+  width: 1800px;
+  position: relative;
+}
+
+.compass__strip--animated {
+  transition: left 0.5s;
+}
+
+.compass__segment {
+  display: inline-block;
+}
+
+.compass__center {
+  width: 4px;
+  height: 12px;
+  background: green;
+  position: absolute;
+  left: 148px;
+  bottom: 0;
+}

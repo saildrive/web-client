@@ -32,7 +32,7 @@ class App extends Component {
                 <Settings />
                 <Menu location={location} />
                 <main className="content" id="content">
-                    <Header navigation={navigation} />
+                    <Header navigation={navigation} slideToggle={this.slideToggle} />
                     <Feedback {...application} />
                     {children}
                 </main>
