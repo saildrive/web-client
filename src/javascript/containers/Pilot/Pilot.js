@@ -6,7 +6,8 @@ import Feedback from "../../components/Feedback/Feedback";
 
 import DBT from "../../components/Gauges/DBT/DBT";
 import Position from "../../components/Gauges/Position/Position";
-import Compass from "../../components/Gauges/Compass/Compass"
+import Compass from "../../components/Gauges/Compass/Compass";
+import Number from "../../components/Gauges/Number/Number";
 
 class Pilot extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class Pilot extends Component {
                 <DBT/>
                 <Position/>
                 <Compass/>
+                <Number/>
 
             </div>
         )
