@@ -1,0 +1,31 @@
+.number {
+  border: 1px solid rgba(73, 96, 121, 1);;
+  background: rgba(31, 32, 44, 1);
+  position: relative;
+  width: 300px;
+  height: 150px;
+}
+
+.number__wrapper {
+  margin: 10px 0 0 14px
+}
+
+.number__label {
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.number__value {
+  font-weight: 600;
+  font-size: 2rem;
+  display: inline-block;
+  margin: 0;
+}
+
+.number__units {
+  font-weight: 200;
+  font-size: 2rem;
+  display: inline-block;
+  margin: 0 0 0 4px;
+}
